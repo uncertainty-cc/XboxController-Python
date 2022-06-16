@@ -1,0 +1,50 @@
+Metadata-Version: 2.1
+Name: dotxboxcontroller
+Version: 0.0.1
+Summary: Getting input from Microsoft XBox 360 controllers via the XInput library on Windows.
+Home-page: https://github.com/uncertainty-cc/dotXboxController
+Author: Rath Robotics
+Author-email: tk@uncertainty.email
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+# dotXboxController
+
+Getting input from Microsoft XBox 360 controllers via the XInput library on Windows.
+
+## Installation
+
+```bash
+pip install dotxboxcontroller
+```
+
+## Usage
+
+```python
+import time
+import sys
+
+from dotxboxcontroller import XboxController, Hand
+
+def main():
+    """
+    """
+    stick = XboxController(0)
+
+    while True:
+        stick.update()
+        stick.setRumble(Hand.LEFT, abs(stick.axes["LTrigger"]))
+        stick.setRumble(Hand.RIGHT, abs(stick.axes["RTrigger"]))
+        print("A Btn:", stick.getAButton(), end="")
+        print("\tPOV:", stick.getPOV(), end="")
+        print("\tX Axis:", stick.getX(Hand.LEFT))
+        time.sleep(.01)
+
+
+if __name__ == "__main__":
+    main()
+
+```

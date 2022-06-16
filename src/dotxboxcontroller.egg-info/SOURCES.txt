@@ -1,0 +1,10 @@
+README.md
+pyproject.toml
+setup.py
+src/dotxboxcontroller/__init__.py
+src/dotxboxcontroller/xboxcontroller.py
+src/dotxboxcontroller.egg-info/PKG-INFO
+src/dotxboxcontroller.egg-info/SOURCES.txt
+src/dotxboxcontroller.egg-info/dependency_links.txt
+src/dotxboxcontroller.egg-info/requires.txt
+src/dotxboxcontroller.egg-info/top_level.txt

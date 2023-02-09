@@ -1,11 +1,11 @@
-# dotXboxController
+# cc.XboxController
 
 Getting input from Microsoft XBox 360 controllers via the XInput library on Windows.
 
 ## Installation
 
 ```bash
-pip install dotxboxcontroller
+pip install cc-xboxcontroller
 ```
 
 ## Usage
@@ -14,7 +14,7 @@ pip install dotxboxcontroller
 import time
 import sys
 
-from dotxboxcontroller import XboxController, Hand
+from cc.xboxcontroller import XboxController, Hand
 
 def main():
     """

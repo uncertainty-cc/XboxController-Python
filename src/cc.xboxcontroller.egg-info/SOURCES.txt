@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+src/cc/__init__.py
+src/cc.xboxcontroller.egg-info/PKG-INFO
+src/cc.xboxcontroller.egg-info/SOURCES.txt
+src/cc.xboxcontroller.egg-info/dependency_links.txt
+src/cc.xboxcontroller.egg-info/requires.txt
+src/cc.xboxcontroller.egg-info/top_level.txt
+src/cc/xboxcontroller/__init__.py
+src/cc/xboxcontroller/xboxcontroller.py

@@ -1,24 +1,25 @@
 Metadata-Version: 2.1
-Name: dotxboxcontroller
+Name: cc.xboxcontroller
 Version: 0.0.1
 Summary: Getting input from Microsoft XBox 360 controllers via the XInput library on Windows.
 Home-page: https://github.com/uncertainty-cc/dotXboxController
-Author: Rath Robotics
-Author-email: tk@uncertainty.email
+Author: Uncertainty.
+Author-email: t_k_233@outlook.email
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: OS Independent
 Requires-Python: >=3.6
 Description-Content-Type: text/markdown
+License-File: LICENSE
 
-# dotXboxController
+# cc.XboxController
 
 Getting input from Microsoft XBox 360 controllers via the XInput library on Windows.
 
 ## Installation
 
 ```bash
-pip install dotxboxcontroller
+pip install cc-xboxcontroller
 ```
 
 ## Usage
@@ -27,7 +28,7 @@ pip install dotxboxcontroller
 import time
 import sys
 
-from dotxboxcontroller import XboxController, Hand
+from cc.xboxcontroller import XboxController, Hand
 
 def main():
     """

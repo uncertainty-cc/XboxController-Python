@@ -1,7 +1,7 @@
 import time
 import sys
 
-from dotxboxcontroller import XboxController, Hand
+from cc.xboxcontroller import XboxController, Hand
 
 def main():
     """

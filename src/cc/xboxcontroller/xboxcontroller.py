@@ -137,7 +137,7 @@ class XboxController(event.EventDispatcher):
         sticks = [d for d in devices if d.isConnected()]
         return list(map(attrgetter("device_number"), sticks)), sticks
 
-    def __init__(self, device_number, normalize_axes=1):
+    def __init__(self, device_number=0, deadzone=XboxController.DEADZONE, dampen=XboxController.DAMPEN, normalize_axes=1):
         values = vars()
         del values["self"]
         self.__dict__.update(values)
@@ -147,6 +147,9 @@ class XboxController(event.EventDispatcher):
         self._last_state = self.getState()
         self.received_packets = 0
         self.missed_packets = 0
+
+        self.deadzone = deadzone
+        self.dampen = dampen
 
         self.axes = {"LTrigger": 0, "RTrigger": 0,
                      "LX": 0, "LY": 0, "RX": 0, "RY": 0, }
@@ -245,10 +248,10 @@ class XboxController(event.EventDispatcher):
             data_size = ctypes.sizeof(data_type)
             last_val = self.translate(last_val, data_size)
             val = self.translate(val, data_size)
-            if abs(last_val - val) > XboxController.DAMPEN:
-                if abs(last_val) < XboxController.DEADZONE:
+            if abs(last_val - val) > self.dampen:
+                if abs(last_val) < self.deadzone:
                     last_val = 0
-                if abs(val) < XboxController.DEADZONE:
+                if abs(val) < self.deadzone:
                     val = 0
                 if last_val != val:
                     if axis not in ["LTrigger", "RTrigger"]:

@@ -1,8 +1,8 @@
 Metadata-Version: 2.1
 Name: cc.xboxcontroller
-Version: 0.0.1
+Version: 0.0.2
 Summary: Getting input from Microsoft XBox 360 controllers via the XInput library on Windows.
-Home-page: https://github.com/uncertainty-cc/dotXboxController
+Home-page: https://github.com/uncertainty-cc/XboxController-Python
 Author: Uncertainty.
 Author-email: t_k_233@outlook.email
 Classifier: Programming Language :: Python :: 3

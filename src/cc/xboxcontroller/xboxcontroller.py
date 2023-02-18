@@ -15,10 +15,6 @@ from pyglet import event
 # structs according to
 # http://msdn.microsoft.com/en-gb/library/windows/desktop/ee417001%28v=vs.85%29.aspx
 
-# add deadzones and dampen noise
-# try appropriate values or simply follow 
-# http://msdn.microsoft.com/en-gb/library/windows/desktop/ee417001%28v=vs.85%29.aspx#dead_zone
-
 
 class XINPUT_GAMEPAD(ctypes.Structure):
     _fields_ = [
@@ -113,6 +109,13 @@ class Hand:
     RIGHT = 1
 
 
+# add deadzones and dampen noise
+# try appropriate values or simply follow 
+# http://msdn.microsoft.com/en-gb/library/windows/desktop/ee417001%28v=vs.85%29.aspx#dead_zone
+
+DEADZONE = 0.08000000000000000
+DAMPEN = 0.00000000500000000
+
 """
 A stateful wrapper to the XboxController, using pyglet event 
 model, that binds to one XInput device and dispatches events 
@@ -122,9 +125,6 @@ Example:
 stick = XboxController(0)
 """
 class XboxController(event.EventDispatcher):
-    DEADZONE = 0.08000000000000000
-    DAMPEN = 0.00000000500000000
-
     max_devices = 4
 
     """
@@ -137,7 +137,7 @@ class XboxController(event.EventDispatcher):
         sticks = [d for d in devices if d.isConnected()]
         return list(map(attrgetter("device_number"), sticks)), sticks
 
-    def __init__(self, device_number=0, deadzone=XboxController.DEADZONE, dampen=XboxController.DAMPEN, normalize_axes=1):
+    def __init__(self, device_number=0, deadzone=DEADZONE, dampen=DAMPEN, normalize_axes=1):
         values = vars()
         del values["self"]
         self.__dict__.update(values)

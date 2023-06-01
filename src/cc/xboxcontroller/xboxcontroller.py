@@ -377,7 +377,11 @@ class XboxController(event.EventDispatcher):
     def getBackButton(self):
         return self.buttons[Button.BACK]
 
+    @deprecated
     def getPOV(self):
+        return self.getDPad()
+
+    def getDPad(self):
         if not self.buttons[Button.DPAD_L] and not self.buttons[Button.DPAD_R] and self.buttons[Button.DPAD_U] and not self.buttons[Button.DPAD_D]:
             return 0
         elif not self.buttons[Button.DPAD_L] and self.buttons[Button.DPAD_R] and self.buttons[Button.DPAD_U] and not self.buttons[Button.DPAD_D]:

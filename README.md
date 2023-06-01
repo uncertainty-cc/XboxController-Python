@@ -26,7 +26,7 @@ def main():
         stick.setRumble(Hand.LEFT, abs(stick.axes["LTrigger"]))
         stick.setRumble(Hand.RIGHT, abs(stick.axes["RTrigger"]))
         print("A Btn:", stick.getAButton(), end="")
-        print("\tPOV:", stick.getPOV(), end="")
+        print("\tD-pad:", stick.getDPad(), end="")
         print("\tX Axis:", stick.getX(Hand.LEFT))
         time.sleep(.01)
 

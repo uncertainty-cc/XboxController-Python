@@ -12,7 +12,6 @@ pip install cc-xboxcontroller
 
 ```python
 import time
-import sys
 
 from cc.xboxcontroller import XboxController, Hand
 

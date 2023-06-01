@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: cc.xboxcontroller
-Version: 0.1.1
+Version: 0.1.2
 Summary: Getting input from Microsoft XBox 360 controllers via the XInput library on Windows.
 Home-page: https://github.com/uncertainty-cc/XboxController-Python
 Author: Uncertainty.
@@ -40,7 +40,7 @@ def main():
         stick.setRumble(Hand.LEFT, abs(stick.axes["LTrigger"]))
         stick.setRumble(Hand.RIGHT, abs(stick.axes["RTrigger"]))
         print("A Btn:", stick.getAButton(), end="")
-        print("\tPOV:", stick.getPOV(), end="")
+        print("\tD-pad:", stick.getDPad(), end="")
         print("\tX Axis:", stick.getX(Hand.LEFT))
         time.sleep(.01)
 

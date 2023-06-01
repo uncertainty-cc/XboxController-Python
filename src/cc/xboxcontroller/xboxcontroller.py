@@ -109,13 +109,31 @@ class Hand:
     RIGHT = 1
 
 
+class Button:
+    Y = 1
+    X = 2
+    B = 3
+    A = 4
+    L = 5
+    BUMPER_R = 7
+    BUMPER_L = 8
+    STICK_R = 9
+    STICK_L = 10
+    BACK = 11
+    START = 12
+    DPAD_R = 13
+    DPAD_L = 14
+    DPAD_D = 15
+    DPAD_U = 16
+
+
 # add deadzones and dampen noise
 # try appropriate values or simply follow 
 # http://msdn.microsoft.com/en-gb/library/windows/desktop/ee417001%28v=vs.85%29.aspx#dead_zone
 
 DEADZONE = 0.08000000000000000
 DAMPEN = 0.00000000500000000
-
+    
 """
 A stateful wrapper to the XboxController, using pyglet event 
 model, that binds to one XInput device and dispatches events 
@@ -336,39 +354,45 @@ class XboxController(event.EventDispatcher):
             return self.axes["RTrigger"]
 
     def getYButton(self):
-        return self.buttons[1]
+        return self.buttons[Button.Y]
 
     def getXButton(self):
-        return self.buttons[2]
+        return self.buttons[Button.X]
 
     def getBButton(self):
-        return self.buttons[3]
+        return self.buttons[Button.B]
 
     def getAButton(self):
-        return self.buttons[4]
+        return self.buttons[Button.A]
 
     def getBumper(self, hand):
         if hand == Hand.LEFT:
-            return self.buttons[8]
+            return self.buttons[Button.BUMPER_L]
         if hand == Hand.RIGHT:
-            return self.buttons[7]
+            return self.buttons[Button.BUMPER_R]
+
+    def getStartButton(self):
+        return self.buttons[Button.START]
+        
+    def getBackButton(self):
+        return self.buttons[Button.BACK]
 
     def getPOV(self):
-        if not self.buttons[14] and self.buttons[16] and not self.buttons[13]:
+        if not self.buttons[Button.DPAD_L] and not self.buttons[Button.DPAD_R] and self.buttons[Button.DPAD_U] and not self.buttons[Button.DPAD_D]:
             return 0
-        if self.buttons[16] and self.buttons[13]:
+        elif not self.buttons[Button.DPAD_L] and self.buttons[Button.DPAD_R] and self.buttons[Button.DPAD_U] and not self.buttons[Button.DPAD_D]:
             return 45
-        if not self.buttons[16] and self.buttons[13] and not self.buttons[15]:
+        elif not self.buttons[Button.DPAD_L] and self.buttons[Button.DPAD_R] and not self.buttons[Button.DPAD_U] and not self.buttons[Button.DPAD_D]:
             return 90
-        if self.buttons[13] and self.buttons[15]:
+        elif not self.buttons[Button.DPAD_L] and self.buttons[Button.DPAD_R] and not self.buttons[Button.DPAD_U] and self.buttons[Button.DPAD_D]:
             return 135
-        if not self.buttons[13] and self.buttons[15] and not self.buttons[14]:
+        elif not self.buttons[Button.DPAD_L] and not self.buttons[Button.DPAD_R] and not self.buttons[Button.DPAD_U] and self.buttons[Button.DPAD_D]:
             return 180
-        if self.buttons[14] and self.buttons[15]:
+        elif self.buttons[Button.DPAD_L] and not self.buttons[Button.DPAD_R] and not self.buttons[Button.DPAD_U] and self.buttons[Button.DPAD_D]:
             return 225
-        if not self.buttons[15] and self.buttons[14] and not self.buttons[16]:
+        elif self.buttons[Button.DPAD_L] and not self.buttons[Button.DPAD_R] and not self.buttons[Button.DPAD_U] and not self.buttons[Button.DPAD_D]:
             return 270
-        if self.buttons[14] and self.buttons[16]:
+        elif self.buttons[Button.DPAD_L] and not self.buttons[Button.DPAD_R] and self.buttons[Button.DPAD_U] and not self.buttons[Button.DPAD_D]:
             return 315
         return -1
 

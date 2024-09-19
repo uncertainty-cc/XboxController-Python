@@ -494,6 +494,24 @@ class XboxController(event.EventDispatcher):
             return self.get_button(Button.BUMPER_L)
         if side.upper() == Hand.RIGHT:
             return self.get_button(Button.BUMPER_R)
+    
+    """
+    Get the left stick button state of the controller.
+    
+    Returns:
+        bool: The state of the left stick button.
+    """
+    def get_left_bumper(self) -> bool:
+        return self.get_button(Button.BUMPER_L)
+    
+    """
+    Get the right stick button state of the controller.
+
+    Returns:
+        bool: The state of the right stick button.
+    """
+    def get_right_bumper(self) -> bool:
+        return self.get_button(Button.BUMPER_R)
 
     """
     Get the start button state of the controller.
@@ -501,7 +519,6 @@ class XboxController(event.EventDispatcher):
     Returns:
         bool: The state of the start button.
     """
-
     def get_start_button(self) -> bool:
         return self.get_button(Button.START)
 

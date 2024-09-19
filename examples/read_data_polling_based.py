@@ -1,6 +1,6 @@
 import time
 
-from cc.xboxcontroller import XboxController, Hand
+from cc.xboxcontroller import XboxController
 
 def main():
     """
@@ -9,11 +9,11 @@ def main():
 
     while True:
         stick.update()
-        stick.setRumble(Hand.LEFT, abs(stick.axes["LTrigger"]))
-        stick.setRumble(Hand.RIGHT, abs(stick.axes["RTrigger"]))
-        print("A Btn:", stick.getAButton(), end="")
-        print("\tD-pad:", stick.getDPad(), end="")
-        print("\tX Axis:", stick.getX(Hand.LEFT))
+        stick.set_left_rumble(abs(stick.get_left_trigger()))
+        stick.set_right_rumble(abs(stick.get_right_trigger()))
+        print("A Btn:", stick.get_a_button(), end="")
+        print("\tD-pad:", stick.get_dpad(), end="")
+        print("\tX Axis:", stick.get_left_x())
         time.sleep(.01)
 
 

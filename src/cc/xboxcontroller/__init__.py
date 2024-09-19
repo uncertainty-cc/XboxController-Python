@@ -1,1 +1,1 @@
-from .xboxcontroller import XboxController, Hand, Button
+from .xboxcontroller import XboxController, Axis, Button, Hand

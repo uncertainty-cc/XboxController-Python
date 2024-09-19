@@ -1,11 +1,11 @@
-import setuptools
+from setuptools import setup, find_namespace_packages
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
-setuptools.setup(
+setup(
     name="cc.xboxcontroller",
-    version="2023.12.26",
+    version="2024.09.01",
     author="Uncertainty.",
     author_email="t_k_233@outlook.email",
     description="Getting input from Microsoft XBox 360 controllers via the XInput library on Windows.",
@@ -24,6 +24,6 @@ setuptools.setup(
         "pyglet",
     ],
     package_dir={"": "src"},
-    packages=setuptools.find_packages(where="src"),
+    packages=find_namespace_packages(where="src", include=["cc.xboxcontroller"]),
     python_requires=">=3.8",
 )

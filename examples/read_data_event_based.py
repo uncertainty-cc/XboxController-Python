@@ -1,7 +1,7 @@
 import time
 import sys
 
-from cc.xboxcontroller import XboxController, Hand
+from cc.xboxcontroller import XboxController
 
 def main():
     """
@@ -9,17 +9,17 @@ def main():
     stick = XboxController(0)
 
     @stick.event
-    def onButton(button, state):
+    def on_button(button, state):
         print("button", button, state)
         pass
     
     @stick.event
-    def onAxis(axis, value):
+    def on_axis(axis, value):
         print("axis", axis, value)
         if axis == "LTrigger":
-            stick.setRumble(Hand.LEFT, value)
+            stick.set_left_rumble(value)
         if axis == "RTrigger":
-            stick.setRumble(Hand.RIGHT, value)
+            stick.set_right_rumble(value)
 
     while True:
         stick.update()

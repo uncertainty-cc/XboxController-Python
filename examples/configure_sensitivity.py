@@ -1,7 +1,6 @@
 import time
-import sys
 
-from cc.xboxcontroller import XboxController, Hand
+from cc.xboxcontroller import XboxController
 
 def main():
     """
@@ -10,8 +9,8 @@ def main():
 
     while True:
         stick.update()
-        print("X:", stick.getX(Hand.LEFT), end="")
-        print("\tY:", stick.getY(Hand.LEFT))
+        print("X:", stick.get_left_x(), end="")
+        print("\tY:", stick.get_left_y())
         time.sleep(.01)
 
 if __name__ == "__main__":
